@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Веб-проект</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #timer-container {
+      text-align: center;
+      font-size: 3rem;
+    }
+
+    #video-container, #end-screen {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: black;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      z-index: 10;
+    }
+
+    #video-container video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    #end-screen button {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Таймер -->
+  <div id="timer-container">
+    <p>До початку:</p>
+    <p id="timer">00:00:00</p>
+  </div>
+
+  <!-- Відео -->
+  <div id="video-container">
+    <video id="video" autoplay muted playsinline>
+      <source src="https://videos.pexels.com/video-files/3139865/3139865-hd_720_1280_30fps.mp4" type="video/mp4">
+      Ваш браузер не підтримує відтворення відео.
+    </video>
+  </div>
+
+  <!-- Чорний екран із текстом -->
+  <div id="end-screen">
+    <p>Дякуємо за увагу!</p>
+    <button class="btn btn-primary" onclick="alert('Допомога!')">Допомогти</button>
+  </div>
+
+  <script>
+    // Налаштування дати й часу
+    const targetDate = new Date("2024-11-20T14:16:00"); // Замініть на вашу дату й час
+    const timerElement = document.getElementById("timer");
+    const timerContainer = document.getElementById("timer-container");
+    const videoContainer = document.getElementById("video-container");
+    const videoElement = document.getElementById("video");
+    const endScreen = document.getElementById("end-screen");
+
+    // Оновлення таймера
+    const updateTimer = () => {
+      const now = new Date();
+      const timeLeft = targetDate - now;
+
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        timerContainer.style.display = "none";
+        videoContainer.style.display = "flex";
+        videoElement.play();
+      } else {
+        const hours = String(Math.floor(timeLeft / (1000 * 60 * 60))).padStart(2, "0");
+        const minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+        const seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, "0");
+        timerElement.textContent = `${hours}:${minutes}:${seconds}`;
+      }
+    };
+
+    // Запуск таймера
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    // Показ чорного екрану після завершення відео
+    videoElement.addEventListener("ended", () => {
+      videoContainer.style.display = "none";
+      endScreen.style.display = "flex";
+    });
+  </script>
+</body>
+</html>
