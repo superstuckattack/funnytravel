@@ -4,9 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Веб-проект</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+    .ubuntu-light {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        }
+
+        .ubuntu-regular {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        }
+
+        .ubuntu-medium {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+        }
+
+        .ubuntu-bold {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        }
+
+        .ubuntu-light-italic {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 300;
+        font-style: italic;
+        }
+
+        .ubuntu-regular-italic {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        font-style: italic;
+        }
+
+        .ubuntu-medium-italic {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 500;
+        font-style: italic;
+        }
+
+        .ubuntu-bold-italic {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 700;
+        font-style: italic;
+        }
+
     body {
+      font-family: "Ubuntu";
       margin: 0;
       padding: 0;
       overflow: hidden;
@@ -44,6 +95,12 @@
       object-fit: cover;
     }
 
+    #end-screen {
+        text-align: center;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
     #end-screen button {
       margin-top: 20px;
       font-size: 1.2rem;
@@ -53,7 +110,7 @@
 <body>
   <!-- Таймер -->
   <div id="timer-container">
-    <p>До початку:</p>
+    <p>До запуску залишилось</p>
     <p id="timer">00:00:00</p>
   </div>
 
@@ -67,8 +124,9 @@
 
   <!-- Чорний екран із текстом -->
   <div id="end-screen">
-    <p>Дякуємо за увагу!</p>
-    <button class="btn btn-primary" onclick="alert('Допомога!')">Допомогти</button>
+    <p>Це могла б бути правда...</p>
+    <p>Давай наблизимо це момент задонативши на банку</p>
+    <button class="btn btn-success" onclick="alert('Допомога!')">Банка тут</button>
   </div>
 
   <script>
